@@ -1,5 +1,5 @@
 /*!
- * Copyright 2021 WPPConnect Team
+ * Copyright 2024 WPPConnect Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,24 +16,34 @@
 
 import { exportModule } from '../exportModule';
 import { Wid } from '../misc';
-import { StatusModel } from '../models';
-import { BaseCollection } from '.';
 
 /**
- * @whatsapp 46133
- * @whatsapp WAWebTextStatusCollection >= 2.3000.1013010908
- * */
-export declare class StatusCollection extends BaseCollection<StatusModel> {
-  static model: StatusModel;
-  static idClass: typeof Wid;
-  static staleCollection?: any;
-  static resumeOnAvailable?: any;
-}
+ * @whatsapp 276084
+ */
+export declare function getNewsletterSubscribers(
+  jid: string,
+  param2: number,
+  view: 'LIMITED'
+): Promise<{
+  subscribers: {
+    id: Wid;
+    isContact?: boolean;
+    isGroup?: boolean;
+    isOnline?: boolean;
+    isUser?: boolean;
+    shortname?: string;
+    state?: string;
+    displayName?: string;
+    phoneNumber?: string;
+    subscribeTime?: number;
+    t: number;
+  }[];
+}>;
 
 exportModule(
   exports,
   {
-    StatusCollection: ['StatusCollectionImpl', 'TextStatusCollectionImpl'],
+    getNewsletterSubscribers: 'getNewsletterSubscribers',
   },
-  (m) => m.StatusCollectionImpl || m.TextStatusCollectionImpl
+  (m) => m.getNewsletterSubscribers
 );
