@@ -14,22 +14,34 @@
  * limitations under the License.
  */
 
+import { BaseCollection } from '../collections';
 import { exportModule } from '../exportModule';
-import { ChatModel } from '../models';
+import { Model, MsgModel } from '../models';
 
-/**
- * @whatsapp 10236
- * @whatsapp 510236 >= 2.2222.8
- * @whatsapp 742348 >= 2.2228.4
- * @whatsapp 456180 >= 2.2230.8
- * @whatsapp WAWebSetPinChatAction >= 2.3000.x
+/** @whatsapp 51612
+ * @whatsapp 951612 >= 2.2222.8
  */
-export declare function setPin(chat: ChatModel, pin: boolean): Promise<void>;
+export declare class MsgLoadState extends Model {
+  noEarlierMsgs: any;
+  isLoadingEarlierMsgs: any;
+  isLoadingRecentMsgs: any;
+  isLoadingAroundMsgs: any;
+  contextLoaded: any;
+}
+/** @whatsapp 51612
+ * @whatsapp 951612 >= 2.2222.8
+ */
+export declare class MsgLoad extends BaseCollection<MsgModel> {
+  msgLoadState: MsgLoadState;
+  loadRecentPromise?: Promise<any>;
+  loadEarlierPromise?: Promise<any>;
+  loadAroundPromise?: Promise<any>;
+}
 
 exportModule(
   exports,
   {
-    setPin: 'setPin',
+    MsgLoad: 'ChatMsgsCollection',
   },
-  (m) => m.setPin && !m.unpinAll && !m.getPinLimit
+  (m) => m.ChatMsgsCollection
 );

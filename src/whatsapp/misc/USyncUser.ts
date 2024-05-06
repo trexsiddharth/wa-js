@@ -1,5 +1,5 @@
 /*!
- * Copyright 2021 WPPConnect Team
+ * Copyright 2024 WPPConnect Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,23 @@
  */
 
 import { exportModule } from '../exportModule';
-import { ChatModel } from '../models';
 
 /**
- * @whatsapp 10236
- * @whatsapp 510236 >= 2.2222.8
- * @whatsapp 742348 >= 2.2228.4
- * @whatsapp 456180 >= 2.2230.8
- * @whatsapp WAWebSetPinChatAction >= 2.3000.x
+ * @whatsapp 459857
  */
-export declare function setPin(chat: ChatModel, pin: boolean): Promise<void>;
+export declare class USyncUser {
+  constructor();
+  withPhone(a: any): any;
+  withId(a: any): any;
+  withLid(a: any): any;
+  withType(a: any): any;
+  withUsername(a: any): any;
+}
 
 exportModule(
   exports,
   {
-    setPin: 'setPin',
+    USyncUser: 'USyncUser',
   },
-  (m) => m.setPin && !m.unpinAll && !m.getPinLimit
+  (m) => m.USyncUser
 );

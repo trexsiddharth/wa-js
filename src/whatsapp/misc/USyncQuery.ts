@@ -14,36 +14,36 @@
  * limitations under the License.
  */
 
-import { BaseCollection } from '../collections';
 import { exportModule } from '../exportModule';
-import { Model, MsgModel } from '../models';
+import { Wid } from './Wid';
 
-/** @whatsapp 51612
- * @whatsapp 951612 >= 2.2222.8
+/**
+ * @whatsapp 459857
  */
-export declare class MsgLoadState extends Model {
-  noEarlierMsgs: any;
-  isLoadingEarlierMsgs: any;
-  isLoadingRecentMsgs: any;
-  isLoadingAroundMsgs: any;
-  contextLoaded: any;
-}
-
-/** @whatsapp 51612
- * @whatsapp 951612 >= 2.2222.8
- */
-export declare class MsgLoad extends BaseCollection<MsgModel> {
-  msgLoadState: MsgLoadState;
-  loadRecentPromise?: Promise<any>;
-  loadEarlierPromise?: Promise<any>;
-  loadAroundPromise?: Promise<any>;
+export declare class USyncQuery {
+  constructor();
+  $1(): any;
+  execute(): any;
+  withBotProfileProtocol(): any;
+  withBusinessProtocol(): any;
+  withContactProtocol(): any;
+  withContext(a: any): any;
+  withDeviceProtocol(): Wid;
+  withDisappearingModeProtocol(): any;
+  withFeaturesProtocol(a: any): any;
+  withLidProtocol(): Wid;
+  withMode(a: any): any;
+  withPictureProtocol(): any;
+  withStatusProtocol(): any;
+  withTextStatusProtocol(): any;
+  withUser(a: any): any;
+  withUsernameProtocol(): any;
 }
 
 exportModule(
   exports,
   {
-    MsgLoadState: 'MsgLoadState',
-    MsgLoad: 'ChatMsgsCollection',
+    USyncQuery: 'USyncQuery',
   },
-  (m) => m.MsgLoadState
+  (m) => m.USyncQuery
 );
