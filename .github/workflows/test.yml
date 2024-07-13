@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
 
       - name: Setup Node
-        uses: actions/setup-node@v4.0.2
+        uses: actions/setup-node@v4.0.3
         with:
           node-version: 16.x
 
@@ -49,10 +49,10 @@ jobs:
             let versions = allVersions.filter(
               (v) => semver.satisfies(v, supportedVersion, {includePrerelease: true})
             );
-            versions = versions.map(v => v.split('.').slice(0, -1).join('.') + '.x');
+            versions = versions.map(v => v.split(/^(\d+\.\d+\.\d{5})/).slice(0, -1).join('') + '.x');
             versions = versions.filter((v,i,a)=>a.indexOf(v)==i);
 
-            return versions.reverse()
+            return versions.reverse();
 
     outputs:
       versions: ${{ steps.versions.outputs.result }}
@@ -69,10 +69,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
 
       - name: Setup Node
-        uses: actions/setup-node@v4.0.2
+        uses: actions/setup-node@v4.0.3
         with:
           node-version: 16.x
 

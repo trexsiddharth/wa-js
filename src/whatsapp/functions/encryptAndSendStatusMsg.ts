@@ -15,30 +15,36 @@
  */
 
 import { exportModule } from '../exportModule';
+import { MsgKey, Wid } from '../misc';
+import { MsgModel } from '../models';
 
-export interface ReactionData {
-  msgKey: string;
-  orphan: number;
-  orphanReason: any;
-  parentMsgKey: string;
-  reactionText: string;
-  read: boolean;
-  senderUserJid: string;
-  timestamp: number;
-}
-
-/** @whatsapp 7394
- * @whatsapp 307394 >= 2.2222.8
- * @whatsapp WAWebReactionsMsgAction >= 2.3000.x
+/**
+ * @whatsapp WAWebEncryptAndSendStatusMsg
  */
-export declare function createOrUpdateReactions(
-  data: ReactionData[]
+export declare function encryptAndSendStatusMsg(
+  msg: {
+    msg: {
+      type: string;
+      data: MsgModel;
+    };
+    data: {
+      ack: number;
+      author?: Wid;
+      from: Wid;
+      id: MsgKey;
+      subtype?: string;
+      to: Wid;
+      type: string;
+    };
+  },
+  proto: any,
+  report: any
 ): Promise<any>;
 
 exportModule(
   exports,
   {
-    createOrUpdateReactions: ['addOrUpdateReactionsModelCollection'],
+    encryptAndSendStatusMsg: 'encryptAndSendStatusMsg',
   },
-  (m) => m.addOrUpdateReactionsModelCollection
+  (m) => m.encryptAndSendStatusMsg
 );

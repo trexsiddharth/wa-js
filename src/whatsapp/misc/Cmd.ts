@@ -66,15 +66,39 @@ export declare class CmdClass extends EventEmitter {
     id?: any,
     toastPosition?: any
   ): void;
+  /** Whatsapp <= 2.3000.1014080102 */
   sendDeleteMsgs(
     chat: ChatModel,
-    msgs: MsgModel[],
-    clearMedia?: boolean,
-    toastPosition?: any
+    msg:
+      | {
+          type: string;
+          list: MsgModel[];
+        }
+      | MsgModel[],
+    options?: {
+      clearMedia?: boolean;
+      toastPosition?: any;
+    }
+  ): void;
+  /** Whatsapp >= 2.3000.1014080102 */
+  sendDeleteMsgs(
+    chat: ChatModel,
+    msg:
+      | {
+          type: string;
+          list: MsgModel[];
+        }
+      | MsgModel[],
+    clearMedia?: boolean
   ): void;
   sendRevokeMsgs(
     chat: ChatModel,
-    msgs: MsgModel[],
+    msg:
+      | {
+          type: string;
+          list: MsgModel[];
+        }
+      | MsgModel[],
     options?: {
       clearMedia?: boolean;
       toastPosition?: any;

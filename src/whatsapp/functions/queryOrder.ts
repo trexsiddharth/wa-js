@@ -1,5 +1,5 @@
 /*!
- * Copyright 2021 WPPConnect Team
+ * Copyright 2024 WPPConnect Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,29 +16,34 @@
 
 import { exportModule } from '../exportModule';
 
-export interface ReactionData {
-  msgKey: string;
-  orphan: number;
-  orphanReason: any;
-  parentMsgKey: string;
-  reactionText: string;
-  read: boolean;
-  senderUserJid: string;
-  timestamp: number;
-}
-
-/** @whatsapp 7394
- * @whatsapp 307394 >= 2.2222.8
- * @whatsapp WAWebReactionsMsgAction >= 2.3000.x
- */
-export declare function createOrUpdateReactions(
-  data: ReactionData[]
-): Promise<any>;
+/** @whatsapp WAWebBizQueryOrderJob >= 2.30000.0 */
+export declare function queryOrder(
+  productId: string,
+  imageWidth: number,
+  imageHeight: number,
+  token: string,
+  e?: any
+): Promise<{
+  currency: string;
+  createdAt: number;
+  products: {
+    id: string;
+    price: number;
+    thumbnailId: string;
+    thumbnailUrl: string;
+    currency: string;
+    name: string;
+    quantity: number;
+  }[];
+  subtotal: number;
+  total: number;
+  tax: number | null;
+}>;
 
 exportModule(
   exports,
   {
-    createOrUpdateReactions: ['addOrUpdateReactionsModelCollection'],
+    queryOrder: 'queryOrder',
   },
-  (m) => m.addOrUpdateReactionsModelCollection
+  (m) => m.queryOrder && m.queryOrderResponse
 );
