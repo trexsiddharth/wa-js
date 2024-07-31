@@ -216,9 +216,9 @@ exportModule(
 exportModule(
   exports,
   {
-    StatusStore: ['StatusCollectionImpl', 'TextStatusCollection'],
+    StatusStore: 'TextStatusCollection',
   },
-  (m) => m.StatusCollection || m.TextStatusCollection
+  (m) => m.TextStatusCollection
 );
 
 exportModule(
@@ -227,4 +227,125 @@ exportModule(
     StatusV3Store: ['StatusV3Collection', 'StatusCollection'],
   },
   (m) => m.StatusV3CollectionImpl || m.StatusCollection
+);
+
+exportModule(
+  exports,
+  {
+    BlocklistStore: ['default', 'BlocklistCollection'],
+  },
+  (m) => m.BlocklistCollection
+);
+
+exportModule(
+  exports,
+  {
+    PresenceStore: ['PresenceCollectionImpl', 'PresenceCollection'],
+  },
+  (m) => m.PresenceCollectionImpl || m.PresenceCollection
+);
+
+exportModule(
+  exports,
+  {
+    CartStore: ['CartCollectionImpl', 'CartCollection'],
+  },
+  (m) => m.CartCollectionImpl || m.CartCollection
+);
+
+exportModule(
+  exports,
+  {
+    CatalogStore: ['CatalogCollectionImpl', 'CatalogCollection'],
+  },
+  (m) => m.CatalogCollectionImpl || m.CatalogCollection
+);
+
+exportModule(
+  exports,
+  {
+    EmojiVariantStore: ['EmojiVariantCollectionImpl', 'EmojiVariantCollection'],
+  },
+  (m) => m.EmojiVariantCollectionImpl || m.EmojiVariantCollection
+);
+
+exportModule(
+  exports,
+  {
+    LabelStore: ['LabelCollectionImpl', 'LabelCollection'],
+  },
+  (m) => m.LabelCollectionImpl || m.LabelCollection
+);
+
+exportModule(
+  exports,
+  {
+    MsgInfoStore: ['MsgInfoCollectionImpl', 'MsgInfoCollection'],
+  },
+  (m) => m.MsgInfoCollectionImpl || m.MsgInfoCollection
+);
+
+exportModule(
+  exports,
+  {
+    MuteStore: ['MuteCollectionImpl', 'MuteCollection'],
+  },
+  (m) => m.MuteCollectionImpl || m.MuteCollection
+);
+
+exportModule(
+  exports,
+  {
+    OrderStore: ['OrderCollectionImpl', 'OrderCollection'],
+  },
+  (m) => m.OrderCollectionImpl || m.OrderCollection
+);
+
+exportModule(
+  exports,
+  {
+    PinInChatStore: ['PinInChatCollectionImpl', 'PinInChatCollection'],
+  },
+  (m) => m.PinInChatCollectionImpl || m.PinInChatCollection
+);
+
+exportModule(
+  exports,
+  {
+    ProductMessageListStore: [
+      'ProductMessageListCollectionImpl',
+      'ProductMessageListCollection',
+    ],
+  },
+  (m) => m.ProductMessageListCollectionImpl || m.ProductMessageListCollection
+);
+
+exportModule(
+  exports,
+  {
+    RecentEmojiStore: ['RecentEmojiCollectionImpl', 'RecentEmojiCollection'],
+  },
+  (m) => m.RecentEmojiCollectionImpl || m.RecentEmojiCollection
+);
+
+exportModule(
+  exports,
+  {
+    StickerSearchStore: [
+      'StickerSearchCollectionImpl',
+      'StickerSearchCollection',
+    ],
+  },
+  (m) => m.StickerSearchCollectionImpl || m.StickerSearchCollection
+);
+
+exportModule(
+  exports,
+  {
+    BusinessProfileStore: [
+      'BusinessProfileCollectionImpl',
+      'BusinessProfileCollection',
+    ],
+  },
+  (m) => m.BusinessProfileCollectionImpl || m.BusinessProfileCollection
 );

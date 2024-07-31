@@ -19,6 +19,7 @@ export { canMarkPlayed } from './canMarkPlayed';
 export { canMute } from './canMute';
 export { canReply } from './canReply';
 export { clear } from './clear';
+export { closeChat } from './closeChat';
 export { delete } from './delete';
 export { deleteMessage, DeleteMessageReturn } from './deleteMessage';
 export { downloadMedia } from './downloadMedia';
@@ -59,6 +60,11 @@ export {
 export { prepareRawMessage } from './prepareRawMessage';
 export { requestPhoneNumber } from './requestPhoneNumber';
 export {
+  OrderItems,
+  OrderMessageOptions,
+  sendChargeMessage,
+} from './sendChargeMessage';
+export {
   PoolMessageOptions,
   sendCreatePollMessage,
 } from './sendCreatePollMessage';
@@ -81,11 +87,6 @@ export {
   LocationMessageOptions,
   sendLocationMessage,
 } from './sendLocationMessage';
-export {
-  OrderItems,
-  OrderMessageOptions,
-  sendOrderMessage,
-} from './sendOrderMessage';
 export { sendPixKeyMessage } from './sendPixKeyMessage';
 export { sendRawMessage } from './sendRawMessage';
 export { sendReactionToMessage } from './sendReactionToMessage';
@@ -98,5 +99,6 @@ export {
   sendVCardContactMessage,
   VCardContact,
 } from './sendVCardContactMessage';
+export { setInputText } from './setInputText';
 export { starMessage, StarMessageReturn } from './starMessage';
 export { unmute } from './unmute';
