@@ -17,14 +17,14 @@
 import { exportModule } from '../exportModule';
 
 /**
- * @whatsapp 525438
+ * @whatsapp WAWebDBMessageDelete
  */
-export declare function isLegitErrorStack(): boolean;
+export declare function removeStatusMessage(id: string[]): Promise<any>;
 
 exportModule(
   exports,
   {
-    isLegitErrorStack: ['isLegitErrorStack', 'isOfficialClient'],
+    removeStatusMessage: ['removeStatusMessage'],
   },
-  (m) => m.isLegitErrorStack || m.isOfficialClient
+  (m) => m.removeStatusMessage
 );

@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
+import { injectFallbackModule } from '../../webpack';
 import { exportModule } from '../exportModule';
 import { ChatModel, MsgModel } from '../models';
+import { removeStatusMessage } from './removeStatusMessage';
 
 /**
  * @whatsapp WAWebRevokeStatusAction
@@ -28,7 +30,14 @@ export declare function revokeStatus(
 exportModule(
   exports,
   {
-    revokeStatus: 'default',
+    revokeStatus: ['default'],
   },
   (m) => m.default?.displayName?.includes('RevokeStatusAction')
 );
+
+injectFallbackModule('revokeStatus', {
+  default: async (chat: ChatModel, b: MsgModel) => {
+    await (chat as any).revokeMsgs([b.id.toString()]);
+    await removeStatusMessage([b.id.toString()]);
+  },
+});

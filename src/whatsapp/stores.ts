@@ -349,3 +349,22 @@ exportModule(
   },
   (m) => m.BusinessProfileCollectionImpl || m.BusinessProfileCollection
 );
+
+exportModule(
+  exports,
+  {
+    ProfilePicThumbStore: [
+      'ProfilePicThumbCollection',
+      'ProfilePicThumbCollectionImpl',
+    ],
+  },
+  (m) => m.ProfilePicThumbCollection || m.ProfilePicThumbCollectionImpl
+);
+
+exportModule(
+  exports,
+  {
+    QuickReplyStore: ['QuickReplyCollectionImpl', 'QuickReplyCollection'],
+  },
+  (m) => m.QuickReplyCollectionImpl || m.QuickReplyCollection
+);

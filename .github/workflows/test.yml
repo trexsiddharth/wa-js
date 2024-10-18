@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
 
       - name: Setup Node
-        uses: actions/setup-node@v4.0.3
+        uses: actions/setup-node@v4.0.4
         with:
           node-version: 16.x
 
@@ -57,7 +57,7 @@ jobs:
     outputs:
       versions: ${{ steps.versions.outputs.result }}
 
-  test:
+  test_wa_versions:
     needs: provide_wa_versions
     runs-on: ubuntu-latest
     strategy:
@@ -69,10 +69,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
 
       - name: Setup Node
-        uses: actions/setup-node@v4.0.3
+        uses: actions/setup-node@v4.0.4
         with:
           node-version: 16.x
 
@@ -92,6 +92,14 @@ jobs:
       - name: Install Dependencies
         run: npm ci || npm install
 
+      - name: Set environment variables
+        run: |
+          if [ "${{ github.actor }}" = "renovate" ]; then
+            echo "SEND_WEBHOOK_FAILURE=true" >> $GITHUB_ENV
+          else
+            echo "SEND_WEBHOOK_FAILURE=false" >> $GITHUB_ENV
+          fi
+
       - name: Test modules resolution
         uses: nick-invision/retry@v3
         with:
@@ -100,3 +108,6 @@ jobs:
           command: npm run update-module-id -- --dry-run
         env:
           WA_VERSION: '${{matrix.versions }}'
+          DISCORD_WEBHOOK_URL_FAILURE: '${{ secrets.DISCORD_WEBHOOK_URL_FAILURE }}'
+          SEND_WEBHOOK_FAILURE: '${{ env.SEND_WEBHOOK_FAILURE }}'
+          URL_ACTION: 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}'
