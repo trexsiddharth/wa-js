@@ -87,16 +87,41 @@ interface Session extends SessionChatBase {
 interface Derived {
   kind?: any;
   isUser: boolean;
+  /**
+   * Deprecated in favor of getIsUser
+   * @deprecated
+   */
   isPSA: boolean;
+  /**
+   * Deprecated in favor of getIsPSA
+   * @deprecated
+   */
   isGroup: boolean;
+  isParentGroup: boolean;
   isBroadcast: boolean;
   isNewsletter: boolean;
   canUnread: boolean;
   hasUnread: boolean;
   optimisticUnreadCount?: any;
+  /**
+   * Deprecated in favor of getShouldShowUnreadDivider
+   * @deprecated
+   */
   shouldShowUnreadDivider?: any;
+  /**
+   * Deprecated in favor of getShouldAppearInList
+   * @deprecated
+   */
   shouldAppearInList?: any;
+  /**
+   * Deprecated in favor of getPreviewMessage
+   * @deprecated
+   */
   previewMessage?: any;
+  /**
+   * Deprecated in favor of getShowChangeNumberNotification
+   * @deprecated
+   */
   showChangeNumberNotification?: any;
   shouldShowUnreadInTitle?: any;
 }
